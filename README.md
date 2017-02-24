@@ -1,6 +1,8 @@
 # pale
 
-Pale is an application that takes an image and computes a color palette then transforms it into a syntax theme for Atom text editor.
+Pale is an application that takes an image and computes a color palette then transforms it into a syntax theme for Atom text editor. 
+
+https://pale.herokuapp.com/
 
 ## What is needed
 
