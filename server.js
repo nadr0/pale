@@ -5,7 +5,7 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 // Handle connection osf clients
 io.on('connection', function(socket){
@@ -23,6 +23,6 @@ app.get('/favicon.ico', function(request, response) {
     res.send(204);
 });
 
-server.listen(process.env.PORT,function(){
+server.listen(PORT,function(){
     console.log("Server listening on localhost:" + PORT);
 });
