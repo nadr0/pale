@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+  <script src='image.js'></script>
+  <script src="Histogram.js"></script>
+  <script src="color.js"></script>
+  <script src="util.js"></script>
+  <script src="updatePalette.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <style type="text/css" media="screen">
+    #editor {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+    }
+</style>
+    <link href="stylesheet.css" rel="stylesheet">
+    <!-- Loading font-awesome -->
+	<link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
+
+	<!-- Loading Bootstrap -->
+	<link href="../dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Loading Flat UI -->
+	<link href="../dist/css/flat-ui.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="row demo-row">
+          <div class="col-xs-12">
+            <nav class="navbar navbar-inverse navbar-embossed" role="navigation">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+                  <span class="sr-only">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href="#">PALE</a>
+              </div>
+              <div class="collapse navbar-collapse" id="navbar-collapse-01">
+                <ul class="nav navbar-nav navbar-left">
+                  <li>&nbsp</li>
+    			  <!-- FILE DROP DOWN -->
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-file-image-o fa-fw" aria-hidden="true"></i> File <b class="caret"></b></a>
+                    <span class="dropdown-arrow"></span>
+                    <ul class="dropdown-menu">
+                      <li><a onclick="loadImageToCanvas();"><i class="fa fa-upload fa-fw" aria-hidden="true"></i>Load Image</a><li>
+    				  <li class="divider"></li>
+    				  <li id="choose-file-container"><label id="file-input-label" for="file-input"><i class="fa fa-download fa-fw" aria-hidden="true"></i> <a class="menu-text"> Choose a File</a></label><input id="file-input" class="btn btn-primary" type="file"/></li>
+                    </ul>
+                  </li>
+                  <li>&nbsp</li>
+                  <li>
+                      <button class="btn btn-primary menu-button" id="random-button" onclick="updatePalette(_COLORS,shuffle);">Randomize Colors</button>
+                  </li>
+                  <li>&nbsp</li>
+                  <li>
+                      <button class="btn btn-primary menu-button" id="fit-button" onclick="fitToMonokai(_COLORS);">Fit To Monokai</button>
+                  </li>
+                  <li>&nbsp</li>
+                  <li>
+                      <button class="btn btn-primary menu-button" id="file-button" onclick="generatePaletteText();">Generate File</button>
+                  </li>
+                  <li>&nbsp</li>
+                  <li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-paint-brush fa-fw" aria-hidden="true"></i> Previous Colors <b class="caret"></b></a>
+                        <span class="dropdown-arrow"></span>
+                        <ul class="dropdown-menu" id="previous-colors-dropdown">
+
+                        </ul>
+                  </li>
+                 </ul>
+                 <div >
+              </div><!-- /.navbar-collapse -->
+            </nav><!-- /navbar -->
+          </div>
+      </div>
+
+      <div id="palette-display"></div>
+  <div id="mainContainer">
+      <canvas id="canvas"></canvas>
+
+      <div id="editor"></div>
+  </div>
+
+  <!-- ACE EDITOR -->
+  <script src="src/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script>
+      var editor = ace.edit("editor");
+      editor.setTheme("ace/theme/monokai");
+      editor.getSession().setMode("ace/mode/javascript");
+      ace.edit(editor).session.setValue(codeToDisplay);
+      editor.$blockScrolling = Infinity
+  </script>
+
+  <script>
+    var MIN_BINS = 16;
+    initPageLayout();
+    var editor = ace.edit("editor");
+  </script>
+
+    <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
+	<script src="../dist/js/vendor/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="../dist/js/vendor/video.js"></script>
+	<script src="../dist/js/flat-ui.min.js"></script>
+
+
+    <script>
+    // var socket = io();
+
+    var socket = io.connect();
+
+        // Handle client/server interaction
+    socket.on("connect", function () {
+        console.log("Connected!");
+    });
+
+    socket.on("getID", function (data) {
+        console.log('UserID: '+ data);
+    });
+
+    </script>
+</body>
+</html>

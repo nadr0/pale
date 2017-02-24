@@ -1,0 +1,23 @@
+{
+  "name": "pale",
+  "version": "1.0.0",
+  "description": "",
+  "main": "color.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nadr0/pale.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nadr0/pale/issues"
+  },
+  "homepage": "https://github.com/nadr0/pale",
+  "devDependencies": {
+    "express": "^4.14.1",
+    "socket.io": "^1.7.3"
+  }
+}
