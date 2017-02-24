@@ -19,6 +19,10 @@ app.get('/', function(request, response) {
     // Render the homepage
 })
 
+app.get('/favicon.ico', function(request, response) {
+    res.send(204);
+});
+
 server.listen(PORT,function(){
     console.log("Server listening on localhost:" + PORT);
 });
