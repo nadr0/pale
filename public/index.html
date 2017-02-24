@@ -113,17 +113,11 @@
 
 
     <script>
-    // var socket = io();
-
-    var socket = io.connect();
+    var socket = io();
 
         // Handle client/server interaction
     socket.on("connect", function () {
         console.log("Connected!");
-    });
-
-    socket.on("getID", function (data) {
-        console.log('UserID: '+ data);
     });
 
     </script>
