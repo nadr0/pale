@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 8080;
 
 // Handle connection of clients
 io.on('connection', function(socket){
-
+    // Return the socket id back to the client
 });
 
 // Files for client
@@ -20,5 +20,5 @@ app.get('/', function(request, response) {
 })
 
 server.listen(PORT,function(){
-
+    console.log("Server listening on localhost:" + PORT);
 });
