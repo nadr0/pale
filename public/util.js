@@ -169,7 +169,7 @@ function generatePaletteText() {
     }
 
 
-    var copyPaste = '// Copy and paste these colors in colors.less\n';
+    var copyPaste = '// Download the syntax package for atom from the link above [atom syntax package]\n// cd ~/.atom/packages/pale-syntax/styles/ to find the color.less file. \n// Copy and paste these colors in colors.less (i.e. overwrite the file)\n';
 
     for (c in output) {
         copyPaste += c + ': ' + output[c] + ';\n';
