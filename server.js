@@ -5,7 +5,7 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 
 // Handle connection of clients
 io.on('connection', function(socket){
@@ -19,6 +19,6 @@ app.get('/', function(request, response) {
     // Render the homepage
 })
 
-server.listen(PORT,function(){
+server.listen(process.env.PORT, function(){
 
 });
