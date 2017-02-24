@@ -144,6 +144,7 @@ body {
     overflow: scroll;
 }
 
-#package-link {
-    /*color: #7F8C8D !important;*/
+#github-link {
+    padding: 0px;
+    margin-top: 10px;
 }
